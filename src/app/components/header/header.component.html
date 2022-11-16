@@ -1,4 +1,4 @@
-<mat-toolbar>
+<!-- <mat-toolbar>
   <mat-toolbar-row>
     <img
       src="../../../favicon.ico"
@@ -7,5 +7,17 @@
       width="40px"
       (click)="home()"
     />
+  </mat-toolbar-row>
+</mat-toolbar> -->
+
+<mat-toolbar color="primary" class="navbar">
+  <mat-toolbar-row>
+    <div>
+      <span>Pokemon</span>
+      <span (click)="home()">Home</span>
+      <span (click)="detail()">Detail</span>
+      <span *ngIf="isAdmin">Product</span>
+      <span *ngIf="isAdmin">Product List</span>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>

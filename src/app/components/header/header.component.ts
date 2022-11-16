@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  isAdmin = false;
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
@@ -15,6 +17,10 @@ export class HeaderComponent implements OnInit {
 
 home(){
   this.router.navigateByUrl('/home')
+}
+
+detail(){
+  this.router.navigateByUrl("/detail")
 }
 
 }

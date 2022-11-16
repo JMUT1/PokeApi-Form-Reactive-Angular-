@@ -10,6 +10,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatChipsModule} from '@angular/material/chips';
+import { MatTabsModule } from '@angular/material/tabs';
+
 
 @NgModule({
   imports: [
@@ -23,8 +25,10 @@ import {MatChipsModule} from '@angular/material/chips';
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
-    MatChipsModule
+    MatChipsModule,
+    MatTabsModule,
   ],
+
   exports: [
     MatButtonModule,
     MatMenuModule,
@@ -36,7 +40,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
-    MatChipsModule
-  ]
+    MatChipsModule,
+    MatTabsModule,
+    ]
 })
 export class MaterialModule {}

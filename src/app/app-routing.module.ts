@@ -5,6 +5,7 @@ import { PokeTableComponent } from './components/poke-table/poke-table.component
 
 const routes: Routes = [
   {path: 'home', component: PokeTableComponent },
+  {path: 'detail', component: PokeDetailComponent},
   {path: 'pokeDetail/:id', component: PokeDetailComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}

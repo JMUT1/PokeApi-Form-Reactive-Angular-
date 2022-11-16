@@ -1,9 +1,12 @@
 @import '../../assets/img/styles/variable.scss';
 
-.mat-toolbar{
-  background-color: $black;
+.navbar{
+  justify-content: space-between;
+}
+span{
+  padding-right: 1rem;
 }
 
-img:hover{
+span{
   cursor: pointer;
 }
