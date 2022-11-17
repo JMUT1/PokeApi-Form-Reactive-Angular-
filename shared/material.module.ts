@@ -11,6 +11,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatChipsModule} from '@angular/material/chips';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 
 @NgModule({
@@ -27,6 +32,10 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatInputModule,
     MatChipsModule,
     MatTabsModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
 
   exports: [
@@ -42,6 +51,11 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatInputModule,
     MatChipsModule,
     MatTabsModule,
+        MatSelectModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+
     ]
 })
 export class MaterialModule {}

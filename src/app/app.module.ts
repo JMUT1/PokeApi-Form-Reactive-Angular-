@@ -12,6 +12,7 @@ import { MaterialModule } from 'shared/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProgressBarComponent } from '../../shared/progress-bar/progress-bar.component';
 import { CreatePageComponent } from './components/create-page/create-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import { CreatePageComponent } from './components/create-page/create-page.compon
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
