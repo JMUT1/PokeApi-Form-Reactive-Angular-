@@ -1,35 +1,5 @@
 @import '../../assets/img/styles/variable.scss';
 
-// .card{
-//   width: 300px;
-//   margin: auto;
-//   margin-top: 20px;
-//   background-color: red;
-// }
-
-// .header-image{
-//   background-size: cover;
-// }
-
-// .mat-card-header{
-//   background-color: $white;
-//   padding-top: 10px;
-//   border-radius: 10px;
-// }
-
-// .mat-card-title{
-//   text-transform: uppercase;
-//   color: black;
-// }
-
-// .mat-card-subtitle{
-//   color: $black;
-// }
-
-// .mat-chip{
-//   background-color: $black !important;
-// }
-
 .sheet {
   height: 70vh;
   margin-left: 100px;
@@ -42,13 +12,18 @@
   margin-bottom: 20px;
 }
 
-.sheet_table {
+
+.img_move{
+  margin-left: 100px;
+}
+
+.sheet__tab{
   display: flex;
   margin-top: 20px;
   margin-left: 20px;
 }
 
-.sheet__item {
+.sheet__item{
   display: flex;
   flex-direction: column;
   margin-top: 20px;
@@ -58,15 +33,58 @@
   margin-top: 20px;
 }
 
-.sheet_progress {
+.sheet__progress {
   display: flex;
 }
 
-.sheet_progress div {
+.sheet__progress div {
   margin-top: 20px;
 }
 
 .sheet__item_label {
   margin-right: 20px;
   font-weight: bold;
+}
+
+#progress {
+  padding: 0;
+  list-style-type: none;
+  font-family: arial;
+  font-size: 12px;
+  clear: both;
+  line-height: 1em;
+  margin: 0 -1px;
+  text-align: center;
+}
+
+
+
+#progress li:before {
+  content: '';
+  border-left: 16px solid #fff;
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+}
+
+#progress li:after {
+  content: '';
+  border-left: 16px solid #333;
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  z-index: 20;
+}
+
+#progress li.active {
+  background: #555;
+}
+
+#progress li.active:after {
+  border-left-color: #555;
 }

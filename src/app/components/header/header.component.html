@@ -13,10 +13,10 @@
 <mat-toolbar color="primary" class="navbar">
   <mat-toolbar-row>
     <div>
-      <span>Pokemon</span>
+      <span (click)="home()">Pokemon</span>
       <span (click)="home()">Home</span>
-      <span (click)="detail()">Detail</span>
-      <span *ngIf="isAdmin">Product</span>
+      <span>Detail</span>
+      <span (click)="createPage()" *ngIf="isAdmin">Product</span>
       <span *ngIf="isAdmin">Product List</span>
     </div>
   </mat-toolbar-row>
