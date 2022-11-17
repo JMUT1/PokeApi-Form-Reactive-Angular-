@@ -10,6 +10,8 @@ import { PokeTableComponent } from './components/poke-table/poke-table.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'shared/material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ProgressBarComponent } from '../../shared/progress-bar/progress-bar.component';
+import { CreatePageComponent } from './components/create-page/create-page.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     HeaderComponent,
     PokeDetailComponent,
-    PokeTableComponent
+    PokeTableComponent,
+    ProgressBarComponent,
+    CreatePageComponent
   ],
   imports: [
     BrowserModule,

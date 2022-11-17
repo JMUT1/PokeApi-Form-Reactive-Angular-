@@ -1,31 +1,72 @@
 @import '../../assets/img/styles/variable.scss';
 
-.card{
-  width: 300px;
-  margin: auto;
+// .card{
+//   width: 300px;
+//   margin: auto;
+//   margin-top: 20px;
+//   background-color: red;
+// }
+
+// .header-image{
+//   background-size: cover;
+// }
+
+// .mat-card-header{
+//   background-color: $white;
+//   padding-top: 10px;
+//   border-radius: 10px;
+// }
+
+// .mat-card-title{
+//   text-transform: uppercase;
+//   color: black;
+// }
+
+// .mat-card-subtitle{
+//   color: $black;
+// }
+
+// .mat-chip{
+//   background-color: $black !important;
+// }
+
+.sheet {
+  height: 70vh;
+  margin-left: 100px;
+}
+
+.sheet__img {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.sheet_table {
+  display: flex;
   margin-top: 20px;
-  background-color: red;
+  margin-left: 20px;
 }
 
-.header-image{
-  background-size: cover;
+.sheet__item {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
 }
 
-.mat-card-header{
-  background-color: $white;
-  padding-top: 10px;
-  border-radius: 10px;
+.sheet__item div {
+  margin-top: 20px;
 }
 
-.mat-card-title{
-  text-transform: uppercase;
-  color: black;
+.sheet_progress {
+  display: flex;
 }
 
-.mat-card-subtitle{
-  color: $black;
+.sheet_progress div {
+  margin-top: 20px;
 }
 
-.mat-chip{
-  background-color: $black !important;
+.sheet__item_label {
+  margin-right: 20px;
+  font-weight: bold;
 }

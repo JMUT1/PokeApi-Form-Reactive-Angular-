@@ -9,6 +9,8 @@
     />
   </mat-form-field>
 
+  <!-- END OF THE FILER FUNCTION -->
+
   <div>
     <table mat-table [dataSource]="datasource" matSort>
       <!-- ID Column -->
@@ -46,8 +48,9 @@
       </tr>
     </table>
 
+    <!-- PAGGINATOR -->
     <mat-paginator
-      [pageSizeOptions]="[30, 50, 100]"
+      [pageSizeOptions]="[10, 30, 60, 100]"
       aria-label="Select page of users"
     ></mat-paginator>
   </div>

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  isAdmin = false;
+  isAdmin = true;
 
   constructor(private router: Router) {}
 
