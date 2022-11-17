@@ -1,17 +1,14 @@
 <form [formGroup]="profileForm" class="form-container">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>Profile Information</mat-card-title>
+      <mat-card-title>CREATE A PRODUCT</mat-card-title>
     </mat-card-header>
     <mat-card-content>
+      <!-- ======================== -->
       <div class="row">
         <div class="col-md-6">
           <mat-form-field class="full-width">
-            <input
-              formControlName="firstName"
-              matInput
-              placeholder="First name"
-            />
+            <input formControlName="firstName" matInput placeholder="Name" />
             <mat-hint
               style="color: red"
               *ngIf="
@@ -23,45 +20,66 @@
             >
           </mat-form-field>
         </div>
+        <!-- ==================================== -->
         <div class="col-md-6">
-          <mat-form-field class="full-width">
-            <input
-              formControlName="lastName"
-              matInput
-              placeholder="Last name"
-            />
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea formControlName="description" matInput></textarea>
           </mat-form-field>
         </div>
-      </div>
-      <div class="row">
+
+        <!-- PRICE ============ -->
         <div class="col-sm-6">
           <mat-form-field class="full-width">
             <textarea
-              formControlName="address"
+              formControlName="price"
               matInput
-              placeholder="Address"
+              placeholder="Price"
             ></textarea>
           </mat-form-field>
         </div>
+        <!-- ==================================== -->
         <div class="col-md-6 top-padding">
           <mat-form-field class="full-width" appearance="fill">
-            <mat-label>Select DOB</mat-label>
-            <input formControlName="dob" matInput [matDatepicker]="picker" />
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="picker"
-            ></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="Category">
+              <mat-option value="Electronics">Electronics</mat-option>
+              <mat-option value="Cloths">Cloths</mat-option>
+              <mat-option value="Blankets">Blankets</mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <mat-radio-group formControlName="gender" class="margin-left">
-            <mat-radio-button value="male"> Male </mat-radio-button>
-            <mat-radio-button value="female"> Female </mat-radio-button>
-          </mat-radio-group>
+        <!-- ================================= -->
+        <div class="col-sm-6">
+          <mat-form-field class="full-width">
+            <textarea
+              formControlName="urlImg"
+              matInput
+              placeholder="Image Url"
+            ></textarea>
+          </mat-form-field>
         </div>
+        <div class="col-sm-6">
+          <mat-form-field class="full-width">
+            <textarea
+              formControlName="phone"
+              matInput
+              placeholder="Phone"
+            ></textarea>
+          </mat-form-field>
+
+          <div class="col-md-6 top-padding">
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Select</mat-label>
+              <mat-select formControlName="lineCompany">
+                <mat-option value="Mobile">Mobile</mat-option>
+                <mat-option value="LandLine">LandLine</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!--  -->
       </div>
     </mat-card-content>
     <mat-card-actions>

@@ -12,17 +12,18 @@ export class CreatePageComponent implements OnInit {
 
   profileForm = this.formBuilder.group({
     firstName:['', Validators.required],
-    lastName:['', Validators.required],
-    address: ['', Validators.required],
-    dob: ['', Validators.required],
-    gender: ['', Validators.required]
+    description:['', Validators.required],
+    price: ['', Validators.required],
+    Category: ['', Validators.required],
+    urlImg: ['', Validators.required],
+    phone: ['', Validators.required],
+    lineCompany: ['', Validators.required]
   })
 
   ngOnInit(): void {}
 
   saveForm(){
-    console.log(     this.profileForm.value
-);
+    console.log(     this.profileForm.value);
 
   }
 
