@@ -22,8 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PokeDetailComponent,
     PokeTableComponent,
     ProgressBarComponent,
-    CreatePageComponent,
-
+    CreatePageComponent
   ],
   imports: [
     BrowserModule,

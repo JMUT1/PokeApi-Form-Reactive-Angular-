@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-page',
@@ -8,37 +8,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CreatePageComponent implements OnInit {
 
-  numRegex = /^-?\d*[.,]?\d{0,2}$/;
-NumericRegex = "^[0-9]*$"
-
-
-
-
   constructor(private formBuilder: FormBuilder) { }
 
-
-
-
-
-  profileForm :  FormGroup
-  ngOnInit(): void {
-
-this.profileForm = this.formBuilder.group({
-    firstName:['',Validators.compose([Validators.required,Validators.minLength(3),])],
-    description:['',Validators.compose([Validators.required,Validators.minLength(3)])],
-    price: ['',Validators.compose([Validators.required,Validators.minLength(3), Validators.pattern(this.numRegex)])],
+  profileForm = this.formBuilder.group({
+    firstName:['', Validators.required],
+    description:['', Validators.required],
+    price: ['', Validators.required],
     Category: ['', Validators.required],
-    // url: ['', Validators.required, Validators.pattern()],
-    phone: ['',Validators.compose([Validators.required,Validators.minLength(3), Validators.maxLength(10), Validators.pattern(this.numRegex)])],
-    lineCompany: ['', Validators.required],
-    agree: [false, [ Validators.requiredTrue]]
+    urlImg: ['', Validators.required],
+    phone: ['', Validators.required],
+    lineCompany: ['', Validators.required]
   })
 
-  this.profileForm.valueChanges.subscribe(console.log);
-
-  }
+  ngOnInit(): void {}
 
   saveForm(){
+    console.log(     this.profileForm.value);
 
   }
 
