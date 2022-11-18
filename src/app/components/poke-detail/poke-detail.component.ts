@@ -16,13 +16,12 @@ export class PokeDetailComponent implements OnInit {
   pokemonType = [];
   pokemonImg = ''
 
-  searchPokemon: PokemonDetail = new PokemonDetail();
-
-
   constructor(private pokemonService: PokemonService, private activatedRouter : ActivatedRoute) {
     this.activatedRouter.params.subscribe(
       params =>{this.getPokemon(params['id']);
-      }) }
+      }
+    )
+   }
 
 
 

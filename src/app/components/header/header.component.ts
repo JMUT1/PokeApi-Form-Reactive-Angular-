@@ -23,8 +23,4 @@ detail(){
   this.router.navigateByUrl("/detail")
 }
 
-createPage(){
-  this.router.navigateByUrl("/createPage")
-}
-
 }
