@@ -26,11 +26,9 @@ table{
 
 .mat-row:nth-child(odd) {
   background-color:bisque;
-  & .mat-cell{
-    color: tomato;
 
   }
-}
+
 
 .mat-cell:first-letter{
   text-transform: uppercase;
