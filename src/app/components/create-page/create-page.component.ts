@@ -21,7 +21,7 @@ form: FormGroup
   private buildForm(){
 this.form = this.formBuilder.group({
   name: ['',  [Validators.required, Validators.minLength(3), Validators.pattern(/^[A-Za-z0-9_-]*$/)]],
-  description: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/ ^[A-Za-z0-9_-]*$/)]],
+  description: ['',  [Validators.required, Validators.minLength(3), Validators.pattern(/^[A-Za-z0-9_-]*$/)]],
   category: ['', [Validators.required]],
   price: ['', [Validators.required, Validators.pattern(/^[0-9]*\.[0-9][0-9]$/)]],
   imageUrl: ['', [Validators.required, Validators.pattern(/[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/)]],
