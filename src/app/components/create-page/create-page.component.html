@@ -1,34 +1,38 @@
-<form [formGroup]="profileForm" class="form-container">
+<form
+  [formGroup]="form"
+  novalidate
+  (ngSubmit)="save($event)"
+  class="form-container"
+>
+  <!-- ===============================HEADER=================================================================== -->
+
   <mat-card>
     <mat-card-header>
-      <mat-card-title>CREATE A PRODUCT</mat-card-title>
+      <mat-card-title> Profile Information </mat-card-title>
     </mat-card-header>
+
+    <!-- =========================END OF HEADER=================================================================== -->
     <mat-card-content>
-      <!-- ======================== -->
       <div class="row">
         <div class="col-md-6">
           <mat-form-field class="full-width">
-            <input formControlName="firstName" matInput placeholder="Name" />
-            <mat-hint
-              style="color: red"
-              *ngIf="
-                profileForm.get('firstName').touched &&
-                profileForm.get('firstName').errors?.required
-              "
-            >
-              First name is required</mat-hint
-            >
+            <input formControlName="name" matInput placeholder="Name" />
           </mat-form-field>
         </div>
-        <!-- ==================================== -->
-        <div class="col-md-6">
-          <mat-form-field class="full-width" appearance="fill">
-            <mat-label>Description</mat-label>
-            <textarea formControlName="description" matInput></textarea>
-          </mat-form-field>
-        </div>
+      </div>
 
-        <!-- PRICE ============ -->
+      <!--========================= END OF NAME========================= -->
+      <div class="col-md-6">
+        <mat-form-field class="full-width">
+          <input
+            formControlName="description"
+            matInput
+            placeholder="Description"
+          />
+        </mat-form-field>
+      </div>
+      <!--========================= END OF DESCRIPTION ========================= -->
+      <div class="row">
         <div class="col-sm-6">
           <mat-form-field class="full-width">
             <textarea
@@ -38,27 +42,34 @@
             ></textarea>
           </mat-form-field>
         </div>
-        <!-- ==================================== -->
+      </div>
+      <!--========================= END OF PRICE ========================= -->
+      <div class="row">
         <div class="col-md-6 top-padding">
-          <mat-form-field class="full-width" appearance="fill">
+          <mat-form-field appearance="fill">
             <mat-label>Category</mat-label>
-            <mat-select formControlName="Category">
+            <mat-select formControlName="category">
               <mat-option value="Electronics">Electronics</mat-option>
               <mat-option value="Cloths">Cloths</mat-option>
               <mat-option value="Blankets">Blankets</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
-        <!-- ================================= -->
+      </div>
+      <!--========================= END OF CATEGORY ========================= -->
+      <div class="row">
         <div class="col-sm-6">
           <mat-form-field class="full-width">
             <textarea
-              formControlName="urlImg"
+              formControlName="imageUrl"
               matInput
               placeholder="Image Url"
             ></textarea>
           </mat-form-field>
         </div>
+      </div>
+      <!--========================= END OF IMAGE URL ========================= -->
+      <div class="row">
         <div class="col-sm-6">
           <mat-form-field class="full-width">
             <textarea
@@ -67,25 +78,72 @@
               placeholder="Phone"
             ></textarea>
           </mat-form-field>
-
-          <div class="col-md-6 top-padding">
-            <mat-form-field class="full-width" appearance="fill">
-              <mat-label>Select</mat-label>
-              <mat-select formControlName="lineCompany">
-                <mat-option value="Mobile">Mobile</mat-option>
-                <mat-option value="LandLine">LandLine</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
         </div>
-
-        <!--  -->
+      </div>
+      <!--========================= END OF PHONE ========================= -->
+      <div class="row">
+        <div class="col-md-6 top-padding">
+          <mat-form-field appearance="fill">
+            <mat-label>Select</mat-label>
+            <mat-select formControlName="select">
+              <mat-option value="Mobile">Mobile</mat-option>
+              <mat-option value="Landline">Landline</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
       </div>
     </mat-card-content>
+    <!--========================= END OF FORM ========================= -->
     <mat-card-actions>
-      <button (click)="saveForm()" mat-raised-button color="primary">
-        Save
-      </button>
+      <button type="submit" [disabled]="form.invalid">Submit</button>
     </mat-card-actions>
   </mat-card>
 </form>
+
+<!-- <form [formGroup]="form" novalidate (ngSubmit)="save($event)">
+  <p>
+    Name: <br />
+    <input type="text" formControlName="name" />
+  </p>
+  <p>
+    Fecha: <br />
+    <input type="date" formControlName="date" />
+  </p>
+  <p>
+    Email: <br />
+    <input type="email" formControlName="email" />
+  </p>
+  <div *ngIf="emailField.errors && emailField.touched">
+    <p *ngIf="emailField.hasError('required')">Es un campo requerido</p>
+    <p *ngIf="emailField.hasError('email')">No es un email</p>
+  </div>
+  <p>
+    Texto largo: <br />
+    <textarea cols="30" rows="10" formControlName="text"></textarea>
+    <small>{{ this.form.get("text").value.length }}/80</small>
+  </p>
+  <div *ngIf="textField.errors && textField.touched">
+    <p *ngIf="textField.hasError('required')">Es un campo requerido</p>
+    <p *ngIf="textField.hasError('maxlength')">
+      Te pasaste, máximo deben haber 80 caracteres.
+    </p>
+  </div>
+  <p>
+    Category: <br />
+    <select formControlName="category">
+      <option value="1">Category 1</option>
+      <option value="2">Category 2</option>
+      <option value="3">Category 3</option>
+    </select>
+  </p>
+  <p>
+    Genero: <br />
+    <input type="radio" name="gender" formControlName="gender" value="male" />
+    Male<br />
+    <input type="radio" name="gender" formControlName="gender" value="female" />
+    Female<br />
+    <input type="radio" name="gender" formControlName="gender" value="other" />
+    Other
+  </p>
+  <button type="submit" [disabled]="form.invalid">Guardar</button>
+</form> -->

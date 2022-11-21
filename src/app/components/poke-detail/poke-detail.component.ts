@@ -1,9 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { PokemonService } from 'src/app/services/pokemon.service';
-import { MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
-
-import {PokemonDetail} from "src/app/models/poke-detail-model";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-poke-detail',
@@ -11,43 +8,45 @@ import {PokemonDetail} from "src/app/models/poke-detail-model";
   styleUrls: ['./poke-detail.component.scss']
 })
 export class PokeDetailComponent implements OnInit {
-  pokemonIndex: PokemonDetail
-  pokemon: any = '';
-  pokemonType = [];
-  pokemonImg = ''
 
-  constructor(private pokemonService: PokemonService, private activatedRouter : ActivatedRoute) {
+  pokemon: any = '';
+  pokemonImg = '';
+  pokemonType = [];
+
+  constructor(private activatedRouter: ActivatedRoute,
+    private pokemonService: PokemonService) {
+
     this.activatedRouter.params.subscribe(
-      params =>{this.getPokemon(params['id']);
+      params => {
+        this.getPokemon(params['id']);
       }
     )
-   }
+  }
 
+  ngOnInit(): void {
+  }
 
-
-
-
-   ngOnInit(): void {}
-
-   getPokemon(id){
-     this.pokemonService.getPokemons(id).subscribe(
-       res =>{
-         console.log(res);
-
-         this.pokemon = res;
-         this.pokemonImg = this.pokemon.sprites.front_default;
-         this.pokemonType =  res.types[0].type.name
-        },
-        err => {console.log(err);
-        }
-        )
+  getPokemon(id) {
+    this.pokemonService.getPokemons(id).subscribe(
+      res => {
+        console.log(res);
+        this.pokemon = res;
+        this.pokemonImg = this.pokemon.sprites.front_default;
+        this.pokemonType = res.types[0].type.name;
+      },
+      err => {
+        console.log(err);
       }
+    )
+  }
+  getAbilities(): string {
+    return this.pokemon.abilities.map(x => x.ability.name).join(', ');
+  }
 
-      getAbilities(): string {
-        return this.pokemon.abilities.map(x => x.ability.name).join(', ');
-      }
+  getPrincipalType(list: any[]) {
+    return list.filter(x => x.slot === 1)[0]?.type.name;
+  }
 
-        getPrincipalType(list: any[]) {
-        return list.filter(x => x.slot === 1)[0]?.type.name;
-      }
-    }
+}
+
+

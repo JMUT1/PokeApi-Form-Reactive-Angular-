@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+
 import { Router } from '@angular/router';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
@@ -27,7 +30,7 @@ export class PokeTableComponent implements OnInit {
   getPokemons(){
     let pokemonData;
 
-    for(let i = 1; i<= 151; i++){
+    for(let i = 1; i<= 350; i++){
       this.pokeService.getPokemons(i).subscribe(
 
         res =>{

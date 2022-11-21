@@ -23,4 +23,8 @@ detail(){
   this.router.navigateByUrl("/detail")
 }
 
+createProduct(){
+  this.router.navigateByUrl('/createProduct')
+}
+
 }
