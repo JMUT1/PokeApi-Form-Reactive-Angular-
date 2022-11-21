@@ -18,18 +18,39 @@
           <mat-form-field class="full-width">
             <input formControlName="name" matInput placeholder="Name" />
           </mat-form-field>
+          <div style="color: red" *ngIf="nameField.errors && nameField.touched">
+            <p *ngIf="nameField.hasError('required')">Field required</p>
+            <p *ngIf="nameField.hasError('minlength')">At least 3 characters</p>
+            <p *ngIf="nameField.hasError('pattern')">
+              Numbers and Alphabets only
+            </p>
+          </div>
         </div>
       </div>
 
       <!--========================= END OF NAME========================= -->
-      <div class="col-md-6">
-        <mat-form-field class="full-width">
-          <input
-            formControlName="description"
-            matInput
-            placeholder="Description"
-          />
-        </mat-form-field>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field class="full-width">
+            <input
+              formControlName="description"
+              matInput
+              placeholder="Description"
+            />
+          </mat-form-field>
+          <div
+            style="color: red"
+            *ngIf="descriptionField.errors && descriptionField.touched"
+          >
+            <p *ngIf="descriptionField.hasError('required')">Field required</p>
+            <p *ngIf="descriptionField.hasError('minlength')">
+              At least 3 characters
+            </p>
+            <p *ngIf="descriptionField.hasError('pattern')">
+              Numbers and Alphabets only
+            </p>
+          </div>
+        </div>
       </div>
       <!--========================= END OF DESCRIPTION ========================= -->
       <div class="row">
@@ -41,6 +62,15 @@
               placeholder="Price"
             ></textarea>
           </mat-form-field>
+          <div
+            style="color: red"
+            *ngIf="priceField.errors && priceField.touched"
+          >
+            <p *ngIf="priceField.hasError('required')">Field required</p>
+            <p *ngIf="priceField.hasError('pattern')">
+              Numbers with 2 decimal places only
+            </p>
+          </div>
         </div>
       </div>
       <!--========================= END OF PRICE ========================= -->
@@ -54,6 +84,12 @@
               <mat-option value="Blankets">Blankets</mat-option>
             </mat-select>
           </mat-form-field>
+          <div
+            style="color: red"
+            *ngIf="categoryField.errors && categoryField.touched"
+          >
+            <p *ngIf="categoryField.hasError('required')">Field required</p>
+          </div>
         </div>
       </div>
       <!--========================= END OF CATEGORY ========================= -->
@@ -66,6 +102,10 @@
               placeholder="Image Url"
             ></textarea>
           </mat-form-field>
+          <div style="color: red" *ngIf="urlField.errors && urlField.touched">
+            <p *ngIf="urlField.hasError('required')">Field required</p>
+            <p *ngIf="urlField.hasError('pattern')">Enter valid image URL</p>
+          </div>
         </div>
       </div>
       <!--========================= END OF IMAGE URL ========================= -->
@@ -78,6 +118,14 @@
               placeholder="Phone"
             ></textarea>
           </mat-form-field>
+          <div
+            style="color: red"
+            *ngIf="phoneField.errors && phoneField.touched"
+          >
+            <p *ngIf="phoneField.hasError('required')">Field required</p>
+            <p *ngIf="phoneField.hasError('maxlength')">10 numbers max</p>
+            <p *ngIf="phoneField.hasError('pattern')">Numbers only</p>
+          </div>
         </div>
       </div>
       <!--========================= END OF PHONE ========================= -->
@@ -90,6 +138,12 @@
               <mat-option value="Landline">Landline</mat-option>
             </mat-select>
           </mat-form-field>
+          <div
+            style="color: red"
+            *ngIf="selectField.errors && selectField.touched"
+          >
+            <p *ngIf="selectField.hasError('required')">Field required</p>
+          </div>
         </div>
       </div>
     </mat-card-content>

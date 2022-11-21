@@ -20,18 +20,13 @@ form: FormGroup
 
   private buildForm(){
 this.form = this.formBuilder.group({
-  name: ['',  [Validators.required, Validators.minLength(3), Validators.pattern(/ ^[a-zA-Z0-9_.-]*$/)]],
-  description: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/ ^[a-zA-Z0-9_.-]*$/)]],
+  name: ['',  [Validators.required, Validators.minLength(3), Validators.pattern(/^[A-Za-z0-9_-]*$/)]],
+  description: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/ ^[A-Za-z0-9_-]*$/)]],
   category: ['', [Validators.required]],
-  price: ['', Validators.required, Validators.pattern(/^[0-9]*\.[0-9][0-9]$/)],
-  imageUrl: ['', Validators.required, Validators.pattern(/[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/)],
-  phone: ['', Validators.required, Validators.max(10), Validators.pattern(/^[0-9]*$/)],
+  price: ['', [Validators.required, Validators.pattern(/^[0-9]*\.[0-9][0-9]$/)]],
+  imageUrl: ['', [Validators.required, Validators.pattern(/[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/)]],
+  phone: ['', [Validators.required, Validators.maxLength(10), Validators.pattern(/^[0-9]*$/)]],
   select: ['', Validators.required],
-
-  date: ['', [Validators.required]],
-  email: ['', [Validators.required, Validators.email]],
-
-  gender: ['', [Validators.required]],
 });
 
 // this.form.valueChanges
@@ -49,19 +44,18 @@ save(event: Event){
     console.log(value);
   }}
 
-  get namelField(){
+  get nameField(){
     return this.form.get('name');
   }
 
   get descriptionField(){
     return this.form.get('description')
   }
-    get categoryField(){
-    return this.form.get('category')
-  }
-
   get priceField(){
     return this.form.get('price')
+  }
+    get categoryField(){
+    return this.form.get('category')
   }
 
   get urlField(){
