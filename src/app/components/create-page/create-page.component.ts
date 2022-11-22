@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, Form } from '@angular/forms';
+import { ValueFromArray } from 'rxjs';
 import {debounceTime} from 'rxjs/operators'
 
 @Component({
@@ -10,6 +11,7 @@ import {debounceTime} from 'rxjs/operators'
 export class CreatePageComponent implements OnInit {
 
 form: FormGroup
+
 
 
   constructor(private formBuilder : FormBuilder) {
