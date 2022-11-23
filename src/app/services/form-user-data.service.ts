@@ -28,7 +28,12 @@ userInfo : User[]
   }
 
   getUser(){
-    return this.userInfo
+    if(localStorage.getItem === null){
+      return this.userInfo
+    } else{
+      this.userInfo = JSON.parse(localStorage.getItem('Users'))
+      return this.userInfo
+    }
   }
 
 }
