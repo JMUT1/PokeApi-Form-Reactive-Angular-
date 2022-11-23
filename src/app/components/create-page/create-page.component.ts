@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, Form } from '@angular/forms';
-import { ValueFromArray } from 'rxjs';
-import {debounceTime} from 'rxjs/operators'
+import {MatDialog} from '@angular/material/dialog';
+import {ListComponentComponent} from "../list-component/list-component.component"
+
 
 @Component({
   selector: 'app-create-page',
@@ -11,6 +12,7 @@ import {debounceTime} from 'rxjs/operators'
 export class CreatePageComponent implements OnInit {
 
 form: FormGroup
+
 
 
 

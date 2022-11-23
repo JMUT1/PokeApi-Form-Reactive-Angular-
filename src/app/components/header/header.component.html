@@ -8,7 +8,7 @@
       <span (click)="home()">Home</span>
       <!-- <span>Detail</span> -->
       <span (click)="createProduct()" *ngIf="isAdmin">Product</span>
-      <span *ngIf="isAdmin">Product List</span>
+      <span *ngIf="isAdmin" (click)="productList()">Product List</span>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

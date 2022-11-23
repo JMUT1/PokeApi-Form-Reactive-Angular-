@@ -27,4 +27,8 @@ createProduct(){
   this.router.navigateByUrl('/createProduct')
 }
 
+productList(){
+  this.router.navigateByUrl('/productList')
+}
+
 }
