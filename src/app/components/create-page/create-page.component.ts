@@ -18,7 +18,7 @@ form: FormGroup
 userInfo: User;
 
 
-  constructor(private formBuilder : FormBuilder, private userService : FormUserDataService ) {
+  constructor(private formBuilder : FormBuilder, private userService : FormUserDataService, ) {
     this.buildForm()
   }
 
@@ -26,8 +26,8 @@ userInfo: User;
 
   private buildForm(){
 this.form = this.formBuilder.group({
-  name: ['',  [Validators.required, Validators.minLength(3), Validators.pattern(/^[A-Za-z0-9_-]*$/)]],
-  description: ['',  [Validators.required, Validators.minLength(3), Validators.pattern(/^[A-Za-z0-9_-]*$/)]],
+  name: ['',  [Validators.required, Validators.minLength(3), Validators.pattern(/^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/)]],
+  description: ['',  [Validators.required, Validators.minLength(3), Validators.pattern(/^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/)]],
   category: ['', [Validators.required]],
   price: ['', [Validators.required, Validators.pattern(/^[0-9]*\.[0-9][0-9]$/)]],
   imageUrl: ['', [Validators.required, Validators.pattern(/[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/)]],
@@ -63,9 +63,11 @@ save(event: Event){
   resetData(){
     if(this.form.valid){
       this.form.reset()
-      // this.form.updateValueAndValidity()
+      alert("Form update & ready to get new Info")
+
     }
   }
+
 
   get nameField(){
     return this.form.get('name');
