@@ -14,18 +14,20 @@ userInfo : User[]
     this.userInfo = []
   }
 
-  addUser(userInfo: User){
-    let users = []
-    if(localStorage.getItem('Users')){
-      users = JSON.parse(localStorage.getItem('Users'));
-      users = [...users,userInfo];
-      users.push(userInfo)
 
-    } else{
-      users = [userInfo]
-    }
-    localStorage.setItem('Users', JSON.stringify(users))
+addUser(info: User){
+  this.userInfo.push(info)
+  let userInfo: User[] = []
+  if(localStorage.getItem('Users') === null){
+    userInfo.push(info);
+    localStorage.setItem('Users', JSON.stringify(userInfo))
+  }else{
+    userInfo = JSON.parse(localStorage.getItem('Users'))
+    userInfo.push(info)
+    localStorage.setItem('Users', JSON.stringify(userInfo))
   }
+}
+
 
   getUser(){
     if(localStorage.getItem === null){
