@@ -6,17 +6,29 @@ import { User } from '../models/form-user-info';
 })
 export class FormUserDataService {
 
-  constructor() { }
 
-    addUser(userInfo: User){
+
+userInfo : User[]
+
+ constructor() {
+    this.userInfo = []
+  }
+
+  addUser(userInfo: User){
     let users = []
     if(localStorage.getItem('Users')){
       users = JSON.parse(localStorage.getItem('Users'));
       users = [...users,userInfo];
+      users.push(userInfo)
+
     } else{
       users = [userInfo]
     }
     localStorage.setItem('Users', JSON.stringify(users))
-
   }
+
+  getUser(){
+    return this.userInfo
+  }
+
 }

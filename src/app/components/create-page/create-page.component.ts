@@ -55,18 +55,15 @@ save(event: Event){
   event.preventDefault();
   if(this.form.valid){
     console.log(this.form.value);
-    // this.userInfo = Object.assign(this.userInfo, this.form.value);
-
     alert('Product added successfully')
     this.userService.addUser(this.userData())
   }}
 
 
-
   resetData(){
     if(this.form.valid){
       this.form.reset()
-      this.form.updateValueAndValidity()
+      // this.form.updateValueAndValidity()
     }
   }
 
