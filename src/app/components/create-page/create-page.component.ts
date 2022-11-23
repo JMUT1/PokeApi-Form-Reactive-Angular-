@@ -2,6 +2,7 @@ import { Dialog } from '@angular/cdk/dialog';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, Form } from '@angular/forms';
 import {FormUserDataService} from '../../services/form-user-data.service';
+import {User} from '../../models/form-user-info'
 
 
 
@@ -14,7 +15,7 @@ export class CreatePageComponent implements OnInit {
 
 form: FormGroup
 
-userInfo: any = {};
+userInfo: User;
 
 
   constructor(private formBuilder : FormBuilder, private userService : FormUserDataService ) {
@@ -38,14 +39,26 @@ this.form = this.formBuilder.group({
 
 }
 
+userData():User{
+  return this.userInfo = {
+    name: this.nameField.value,
+    description: this.descriptionField.value,
+    price: this.priceField.value,
+    category:this.categoryField.value,
+    phone: this.phoneField.value,
+    imageUrl: this.urlField.value,
+    select: this.selectField.value,
+  }
+}
 
 save(event: Event){
   event.preventDefault();
   if(this.form.valid){
     console.log(this.form.value);
-    this.userInfo = Object.assign(this.userInfo, this.form.value);
+    // this.userInfo = Object.assign(this.userInfo, this.form.value);
+
     alert('Product added successfully')
-    this.userService.addUser(this.userInfo)
+    this.userService.addUser(this.userData())
   }}
 
 

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { User } from '../models/form-user-info';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ export class FormUserDataService {
 
   constructor() { }
 
-    addUser(userInfo){
+    addUser(userInfo: User){
     let users = []
     if(localStorage.getItem('Users')){
       users = JSON.parse(localStorage.getItem('Users'));
