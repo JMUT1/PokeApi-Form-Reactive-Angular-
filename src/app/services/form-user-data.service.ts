@@ -15,7 +15,6 @@ userInfo : User[]
   }
 
   addUser(userInfo: User){
-    this.userInfo.push(userInfo)
     let users = []
     if(localStorage.getItem('Users')){
       users = JSON.parse(localStorage.getItem('Users'));
