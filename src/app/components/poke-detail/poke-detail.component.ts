@@ -39,6 +39,7 @@ export class PokeDetailComponent implements OnInit {
       }
     )
   }
+
   getAbilities(): string {
     return this.pokemon.abilities.map(x => x.ability.name).join(', ');
   }
@@ -46,7 +47,6 @@ export class PokeDetailComponent implements OnInit {
   getPrincipalType(list: any[]) {
     return list.filter(x => x.slot === 1)[0]?.type.name;
   }
-
 }
 
 
