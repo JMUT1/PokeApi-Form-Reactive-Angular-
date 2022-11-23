@@ -150,7 +150,9 @@
     <!--========================= END OF FORM ========================= -->
     <mat-card-actions>
       <button type="submit" [disabled]="form.invalid">Submit</button>
-      <button type="button">Reset</button>
+      <button type="button" [disabled]="form.invalid" (click)="resetData()">
+        Reset
+      </button>
     </mat-card-actions>
   </mat-card>
 </form>

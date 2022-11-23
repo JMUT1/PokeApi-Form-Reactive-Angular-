@@ -1,7 +1,6 @@
+import { Dialog } from '@angular/cdk/dialog';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, Form } from '@angular/forms';
-import {MatDialog} from '@angular/material/dialog';
-import {ListComponentComponent} from "../list-component/list-component.component"
 
 
 @Component({
@@ -13,10 +12,10 @@ export class CreatePageComponent implements OnInit {
 
 form: FormGroup
 
+userInfo: any = {};
 
 
-
-  constructor(private formBuilder : FormBuilder) {
+  constructor(private formBuilder : FormBuilder, ) {
     this.buildForm()
   }
 
@@ -33,10 +32,7 @@ this.form = this.formBuilder.group({
   select: ['', Validators.required],
 });
 
-// this.form.valueChanges
-// .pipe(debounceTime(500))
-// .subscribe(value => console.log(value)
-// )
+
 
 }
 
@@ -44,9 +40,30 @@ this.form = this.formBuilder.group({
 save(event: Event){
   event.preventDefault();
   if(this.form.valid){
-    const value = this.form.value
-    console.log(value);
+    console.log(this.form.value);
+    this.userInfo = Object.assign(this.userInfo, this.form.value);
+    alert('Product added successfully')
+    this.addUser(this.userInfo)
   }}
+
+  addUser(userInfo){
+    let users = []
+    if(localStorage.getItem('Users')){
+      users = JSON.parse(localStorage.getItem('Users'));
+      users = [...users,userInfo];
+    } else{
+      users = [userInfo]
+    }
+    localStorage.setItem('Users', JSON.stringify(users))
+
+  }
+
+  resetData(){
+    if(this.form.valid){
+      this.form.reset()
+      this.form.updateValueAndValidity()
+    }
+  }
 
   get nameField(){
     return this.form.get('name');
