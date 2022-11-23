@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {CreatePageComponent} from "../create-page/create-page.component"
 import {FormUserDataService} from '../../services/form-user-data.service';
+import { User } from '../../models/form-user-info';
 
 
 @Component({
@@ -11,9 +12,13 @@ import {FormUserDataService} from '../../services/form-user-data.service';
 })
 export class ListComponentComponent implements OnInit {
 
-  constructor(private dialog: MatDialog, private userService : FormUserDataService, private InfoUser: CreatePageComponent ) { }
+data: User[]
+
+  constructor(private dialog: MatDialog, private userService : FormUserDataService ) { }
 
   ngOnInit(): void {
+   this.data =  this.userService.getUser();
+
   }
 
     openDialog() {
@@ -22,7 +27,10 @@ export class ListComponentComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
 
     });
+
+
   }
+
 
 
 
