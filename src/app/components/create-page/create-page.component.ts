@@ -1,6 +1,8 @@
 import { Dialog } from '@angular/cdk/dialog';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, Form } from '@angular/forms';
+import {FormUserDataService} from '../../services/form-user-data.service';
+
 
 
 @Component({
@@ -15,7 +17,7 @@ form: FormGroup
 userInfo: any = {};
 
 
-  constructor(private formBuilder : FormBuilder, ) {
+  constructor(private formBuilder : FormBuilder, private userService : FormUserDataService ) {
     this.buildForm()
   }
 
@@ -43,20 +45,10 @@ save(event: Event){
     console.log(this.form.value);
     this.userInfo = Object.assign(this.userInfo, this.form.value);
     alert('Product added successfully')
-    this.addUser(this.userInfo)
+    this.userService.addUser(this.userInfo)
   }}
 
-  addUser(userInfo){
-    let users = []
-    if(localStorage.getItem('Users')){
-      users = JSON.parse(localStorage.getItem('Users'));
-      users = [...users,userInfo];
-    } else{
-      users = [userInfo]
-    }
-    localStorage.setItem('Users', JSON.stringify(users))
 
-  }
 
   resetData(){
     if(this.form.valid){
