@@ -9,56 +9,32 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PokeDetailComponent implements OnInit {
 
-  pokemon: any = '';
-  pokemonImg = '';
+ pokemon: any = ""
+ pokemonImg = '';
   pokemonType = [];
 
-  pokemonEvolve: any = ""
 
   constructor(private activatedRouter: ActivatedRoute,
-    private pokemonService: PokemonService) {
-
+    private pokeService: PokemonService) {
     this.activatedRouter.params.subscribe(
-      params => {
-        this.getPokemon(params['id']);
+      params =>{
+        this.getMoreData(params['id'])
       }
     )
   }
 
   ngOnInit(): void {
+
   }
 
-  getPokemon(id: any) {
-    this.pokemonService.getPokemons(id).subscribe(
-      res => {
-        // console.log(res);
+  getMoreData(id: any){
+    this.pokeService.getMoreData(id).subscribe(
+      res =>{
         this.pokemon = res;
-        this.pokemonImg = this.pokemon.sprites.front_default;
-        this.pokemonType = res.types[0].type.name;
-      },
-      err => {
-        console.log(err);
+   this.pokemonImg = this.pokemon.sprites.front_default;
+this.pokemonType = res.types[0].type.name;
       }
     )
-  }
 
-  getPokemonEvol(id: any){
-    this.pokemonService.getPokemonsEvolutionChain(id).subscribe((res:any)=>{
-      console.log(res);
-      this.pokemonEvolve = res
-
-
-    })
-  }
-
-
-  getAbilities(): string {
-    return this.pokemon.abilities.map((x: { ability: { name: any; }; }) => x.ability.name).join(', ');
-  }
-
-  getPrincipalType(list: any[]) {
-    return list.filter(x => x.slot === 1)[0]?.type.name;
   }
 }
-
-
