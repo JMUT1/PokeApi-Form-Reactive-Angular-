@@ -17,7 +17,7 @@ export class PokemonService {
   }
 
   getPokemonsNew(){
-    return this.http.get(`${this.baseUrl}/pokemon?limit=50`)
+    return this.http.get(`${this.baseUrl}/pokemon?limit=100`)
   }
 
   getMoreData(name: string){
