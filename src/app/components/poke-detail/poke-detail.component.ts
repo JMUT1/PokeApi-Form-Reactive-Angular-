@@ -31,8 +31,8 @@ export class PokeDetailComponent implements OnInit {
     this.pokeService.getMoreData(id).subscribe(
       res =>{
         this.pokemon = res;
-   this.pokemonImg = this.pokemon.sprites.front_default;
-this.pokemonType = res.types[0].type.name;
+        this.pokemonImg = this.pokemon.sprites.front_default;
+        this.pokemonType = res.types[0].type.name;
       }
     )
 
