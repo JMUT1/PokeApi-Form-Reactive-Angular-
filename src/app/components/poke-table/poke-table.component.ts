@@ -19,6 +19,7 @@ export class PokeTableComponent implements OnInit {
   data: any[] = [];
   datasource = new MatTableDataSource<any>(this.newPokemons);
   pokemons =  [];
+  localStoragePokemons: any = []
 
 
 
@@ -31,11 +32,13 @@ export class PokeTableComponent implements OnInit {
     // this.getPokemonsNew();
     this.pokeService.getPokemonsNew()
     .subscribe((response: any)=>{
+      this.localStoragePokemons.push(response)
       response.results.forEach(result =>{
         this.pokeService.getMoreData(result.name)
         .subscribe((uniqResponse4:any)=>{
           this.newPokemons.push(uniqResponse4)
           console.log(this.newPokemons);
+              localStorage.setItem('Pokemons', JSON.stringify(this.newPokemons))
           this.datasource = new MatTableDataSource<any>(this.newPokemons)
           this.datasource.paginator = this.paginator
         })
@@ -43,8 +46,7 @@ export class PokeTableComponent implements OnInit {
     })
   }
 
-
-  applyFilter(event: Event) {
+   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.datasource.filter = filterValue.trim().toLowerCase();
 
