@@ -19,12 +19,26 @@ export class PokeTableComponent implements OnInit {
   datasource = new MatTableDataSource<any>(this.data);
   pokemons =  [];
 
+  newPokemons: any[] = []
+
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(private pokeService: PokemonService, private router: Router) { }
 
   ngOnInit(): void {
     this.getPokemons();
+    this.pokeService.getPokemonsNew()
+    .subscribe((response: any)=>{
+      response.results.forEach(result =>{
+        this.pokeService.getMoreData(result.name)
+        .subscribe((uniqResponse4:any)=>{
+          this.newPokemons.push(uniqResponse4)
+          console.log(this.newPokemons);
+
+
+        })
+      })
+    })
   }
 
   getPokemons(){
@@ -59,11 +73,10 @@ export class PokeTableComponent implements OnInit {
       this.datasource.paginator.firstPage();
     }
   }
-
-
 getRow(row){
   this.router.navigateByUrl(`pokeDetail/${row.position}`)
-
 }
+
+
 
 }

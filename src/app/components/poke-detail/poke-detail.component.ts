@@ -13,6 +13,8 @@ export class PokeDetailComponent implements OnInit {
   pokemonImg = '';
   pokemonType = [];
 
+  pokemonEvolve: any = ""
+
   constructor(private activatedRouter: ActivatedRoute,
     private pokemonService: PokemonService) {
 
@@ -26,10 +28,10 @@ export class PokeDetailComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getPokemon(id) {
+  getPokemon(id: any) {
     this.pokemonService.getPokemons(id).subscribe(
       res => {
-        console.log(res);
+        // console.log(res);
         this.pokemon = res;
         this.pokemonImg = this.pokemon.sprites.front_default;
         this.pokemonType = res.types[0].type.name;
@@ -40,8 +42,18 @@ export class PokeDetailComponent implements OnInit {
     )
   }
 
+  getPokemonEvol(id: any){
+    this.pokemonService.getPokemonsEvolutionChain(id).subscribe((res:any)=>{
+      console.log(res);
+      this.pokemonEvolve = res
+
+
+    })
+  }
+
+
   getAbilities(): string {
-    return this.pokemon.abilities.map(x => x.ability.name).join(', ');
+    return this.pokemon.abilities.map((x: { ability: { name: any; }; }) => x.ability.name).join(', ');
   }
 
   getPrincipalType(list: any[]) {

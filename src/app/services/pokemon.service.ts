@@ -14,4 +14,17 @@ export class PokemonService {
   getPokemons(index){
     return this.http.get<any>(`${this.baseUrl}/pokemon/${index}`)
   }
+
+      getPokemonsEvolutionChain(index){
+    return this.http.get<any>(`${this.baseUrl}/evolution-chain/${index}`)
+  }
+
+  getPokemonsNew(){
+    return this.http.get(`${this.baseUrl}/pokemon?limit=10`)
+  }
+
+  getMoreData(name: string){
+    return this.http.get(`${this.baseUrl}/pokemon/${name}`)
+  }
+
 }
