@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://pokeapi.co/api/v2'
+  baseUrl: 'https://pokeapi.co/api/v2',
+  evolutionUrl: "https://pokeapi.co/api/v2/evolution-chain"
 };
 
 /*

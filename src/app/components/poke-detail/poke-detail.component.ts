@@ -34,7 +34,5 @@ export class PokeDetailComponent implements OnInit {
         this.pokemonImg = this.pokemon.sprites.front_default;
         this.pokemonType = res.types[0].type.name;
       }
-    )
-
-  }
+    )}
 }

@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 export class PokemonService {
 
   baseUrl = environment.baseUrl;
+  evolutionUrl = environment.evolutionUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -21,6 +22,10 @@ export class PokemonService {
 
   getMoreData(name: string){
     return this.http.get<any>(`${this.baseUrl}/pokemon/${name}`)
+  }
+
+    getEvolution(name: string){
+    return this.http.get<any>(`${this.evolutionUrl}/${name}`)
   }
 
 }

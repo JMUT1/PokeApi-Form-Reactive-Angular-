@@ -4,17 +4,27 @@
 </div>
 
 <mat-tab-group class="sheet">
-  <mat-tab label="About">
+  <mat-tab label="Profile">
     <div class="sheet__tab">
       <div class="sheet__item">
+        <div class="color-gray sheet__item_label">Resume:</div>
+
         <div class="color-gray sheet__item_label">Height:</div>
         <div class="color-gray sheet__item_label">Weight:</div>
         <div class="color-gray sheet__item_label">Abilities:</div>
       </div>
       <div class="sheet__item">
-        <div>{{ pokemon.name }}</div>
-        <div>{{ pokemon.weight }}</div>
+        <div>
+          {{ pokemon.name }}is a pokemon of type
+          {{ pokemonType }}
+        </div>
         <div>{{ pokemon.height }}</div>
+        <div>{{ pokemon.weight }}</div>
+        <div>
+          {{ pokemon.abilities[0].ability.name }}
+          {{ pokemon.abilities[1].ability.name }}
+        </div>
+
         <!-- <div>{{ poke.abilities[0].ability.name }}</div>
         <div>{{ poke.abilities[1].ability.name }}</div> -->
       </div>
@@ -81,7 +91,7 @@
     </div>
   </mat-tab>
 
-  <mat-tab label="Profile">
+  <mat-tab label="More Info">
     <div class="sheet__tab">
       <div class="sheet__item">
         <div class="color-gray sheet__item_label">Height:</div>
