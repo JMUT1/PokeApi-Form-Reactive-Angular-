@@ -1,105 +1,157 @@
-<form [formGroup]="profileForm" class="form-container">
+<form
+  [formGroup]="form"
+  novalidate
+  (ngSubmit)="save($event)"
+  class="form-container"
+>
+  <!-- ===============================HEADER=================================================================== -->
+
   <mat-card>
     <mat-card-header>
-      <mat-card-title>CREATE A PRODUCT</mat-card-title>
+      <mat-card-title> Profile Information </mat-card-title>
     </mat-card-header>
+
+    <!-- =========================END OF HEADER=================================================================== -->
     <mat-card-content>
-      <!-- =============FULL NAME=========== -->
       <div class="row">
         <div class="col-md-6">
           <mat-form-field class="full-width">
-            <input formControlName="firstName" matInput placeholder="Name" />
-            <mat-error
-              style="color: red"
-              *ngIf="profileForm.touched && profileForm.invalid"
-            >
-              Please enter the information
-            </mat-error>
+            <input formControlName="name" matInput placeholder="Name" />
           </mat-form-field>
-          <!-- ===========DESCRIPTION========================= -->
+          <div style="color: red" *ngIf="nameField.errors && nameField.touched">
+            <p *ngIf="nameField.hasError('required')">Field required</p>
+            <p *ngIf="nameField.hasError('minlength')">At least 3 characters</p>
+            <p *ngIf="nameField.hasError('pattern')">
+              Numbers and Alphabets only
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!--========================= END OF NAME========================= -->
+      <div class="row">
+        <div class="col-md-6">
           <mat-form-field class="full-width">
             <input
               formControlName="description"
               matInput
               placeholder="Description"
             />
-            <mat-error
-              style="color: red"
-              *ngIf="
-                profileForm.get('description').touched && profileForm.invalid
-              "
-            >
-              Please enter a valid description
-            </mat-error>
           </mat-form-field>
-
-          <!-- ================PRICE ================================== -->
+          <div
+            style="color: red"
+            *ngIf="descriptionField.errors && descriptionField.touched"
+          >
+            <p *ngIf="descriptionField.hasError('required')">Field required</p>
+            <p *ngIf="descriptionField.hasError('minlength')">
+              At least 3 characters
+            </p>
+            <p *ngIf="descriptionField.hasError('pattern')">
+              Numbers and Alphabets only
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--========================= END OF DESCRIPTION ========================= -->
+      <div class="row">
+        <div class="col-sm-6">
           <mat-form-field class="full-width">
-            <input formControlName="price" matInput placeholder="Price" />
-            <mat-error
-              *ngIf="
-                profileForm.get('price').hasError('pattern') &&
-                profileForm.get('price').touched
-              "
-            >
-              Invalid Input
-            </mat-error>
+            <textarea
+              formControlName="price"
+              matInput
+              placeholder="Price"
+            ></textarea>
           </mat-form-field>
-          <!-- =============CATEGORY======================= -->
-          <div class="col-md-6 top-padding">
-            <mat-form-field class="full-width" appearance="fill">
-              <mat-label>Category</mat-label>
-              <mat-select formControlName="Category">
-                <mat-option value="Electronics">Electronics</mat-option>
-                <mat-option value="Cloths">Cloths</mat-option>
-                <mat-option value="Blankets">Blankets</mat-option>
-              </mat-select>
-            </mat-form-field>
+          <div
+            style="color: red"
+            *ngIf="priceField.errors && priceField.touched"
+          >
+            <p *ngIf="priceField.hasError('required')">Field required</p>
+            <p *ngIf="priceField.hasError('pattern')">
+              Numbers with 2 decimal places only
+            </p>
           </div>
-          <!-- ==================URL IMG=============== -->
-
-          <!-- PHNEE ------------------------->
-          <div class="col-sm-6">
-            <mat-form-field class="full-width">
-              <input formControlName="phone" matInput placeholder="Phone" />
-              <mat-error
-                *ngIf="
-                  profileForm.get('phone').hasError('pattern') &&
-                  profileForm.get('phone').touched
-                "
-              >
-                Invalid Input
-              </mat-error>
-            </mat-form-field>
-
-            <!-- ==============PHONE COMPANY =================== -->
-
-            <div class="col-md-6 top-padding">
-              <mat-form-field class="full-width" appearance="fill">
-                <mat-label>Select</mat-label>
-                <mat-select formControlName="lineCompany">
-                  <mat-option value="Mobile">Mobile</mat-option>
-                  <mat-option value="LandLine">LandLine</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
+        </div>
+      </div>
+      <!--========================= END OF PRICE ========================= -->
+      <div class="row">
+        <div class="col-md-6 top-padding">
+          <mat-form-field appearance="fill">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="category">
+              <mat-option value="Electronics">Electronics</mat-option>
+              <mat-option value="Cloths">Cloths</mat-option>
+              <mat-option value="Blankets">Blankets</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div
+            style="color: red"
+            *ngIf="categoryField.errors && categoryField.touched"
+          >
+            <p *ngIf="categoryField.hasError('required')">Field required</p>
           </div>
-
-          <!--  -->
+        </div>
+      </div>
+      <!--========================= END OF CATEGORY ========================= -->
+      <div class="row">
+        <div class="col-sm-6">
+          <mat-form-field class="full-width">
+            <textarea
+              formControlName="imageUrl"
+              matInput
+              placeholder="Image Url"
+            ></textarea>
+          </mat-form-field>
+          <div style="color: red" *ngIf="urlField.errors && urlField.touched">
+            <p *ngIf="urlField.hasError('required')">Field required</p>
+            <p *ngIf="urlField.hasError('pattern')">Enter valid image URL</p>
+          </div>
+        </div>
+      </div>
+      <!--========================= END OF IMAGE URL ========================= -->
+      <div class="row">
+        <div class="col-sm-6">
+          <mat-form-field class="full-width">
+            <textarea
+              formControlName="phone"
+              matInput
+              placeholder="Phone"
+            ></textarea>
+          </mat-form-field>
+          <div
+            style="color: red"
+            *ngIf="phoneField.errors && phoneField.touched"
+          >
+            <p *ngIf="phoneField.hasError('required')">Field required</p>
+            <p *ngIf="phoneField.hasError('maxlength')">10 numbers max</p>
+            <p *ngIf="phoneField.hasError('pattern')">Numbers only</p>
+          </div>
+        </div>
+      </div>
+      <!--========================= END OF PHONE ========================= -->
+      <div class="row">
+        <div class="col-md-6 top-padding">
+          <mat-form-field appearance="fill">
+            <mat-label>Select</mat-label>
+            <mat-select formControlName="select">
+              <mat-option value="Mobile">Mobile</mat-option>
+              <mat-option value="Landline">Landline</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div
+            style="color: red"
+            *ngIf="selectField.errors && selectField.touched"
+          >
+            <p *ngIf="selectField.hasError('required')">Field required</p>
+          </div>
         </div>
       </div>
     </mat-card-content>
-
-    <!--================ACTIONS TO DO ======================= -->
+    <!--========================= END OF FORM ========================= -->
     <mat-card-actions>
-      <button (click)="saveForm()" mat-raised-button color="primary">
-        Save
-      </button>
-      <button (click)="saveForm()" mat-raised-button color="primary-light">
-        Clear
-      </button>
-      <button (click)="saveForm()" mat-raised-button color="primary">
-        Add New Product
+      <button type="submit" [disabled]="form.invalid">Submit</button>
+      <button type="button" [disabled]="form.invalid" (click)="resetData()">
+        Reset
       </button>
     </mat-card-actions>
   </mat-card>

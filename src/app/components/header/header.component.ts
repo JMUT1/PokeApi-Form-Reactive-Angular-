@@ -23,8 +23,12 @@ detail(){
   this.router.navigateByUrl("/detail")
 }
 
-createPage(){
-  this.router.navigateByUrl("/createPage")
+createProduct(){
+  this.router.navigateByUrl('/createProduct')
+}
+
+productList(){
+  this.router.navigateByUrl('/productList')
 }
 
 }

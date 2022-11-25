@@ -12,18 +12,18 @@
   <!-- END OF THE FILER FUNCTION -->
 
   <div>
-    <table mat-table [dataSource]="datasource" matSort>
+    <table mat-table [dataSource]="datasource">
       <!-- ID Column -->
       <ng-container matColumnDef="position">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>No</th>
-        <td mat-cell *matCellDef="let row">{{ row.position }}</td>
+        <td mat-cell *matCellDef="let row">{{ row.id }}</td>
       </ng-container>
 
       <!-- Image Column -->
       <ng-container matColumnDef="image">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Poke</th>
         <td mat-cell *matCellDef="let row">
-          <img src="{{ row.image }}" alt="pokemon" width="100" height="100" />
+          <img src="{{ row.sprite }}" alt="pokemon" width="100" height="100" />
         </td>
       </ng-container>
 

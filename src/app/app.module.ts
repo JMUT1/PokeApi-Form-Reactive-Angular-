@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProgressBarComponent } from '../../shared/progress-bar/progress-bar.component';
 import { CreatePageComponent } from './components/create-page/create-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListComponentComponent } from './components/list-component/list-component.component';
+import {FormUserDataService} from '../app/services/form-user-data.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PokeTableComponent,
     ProgressBarComponent,
     CreatePageComponent,
-
+    ListComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    FormUserDataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,9 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { PokemonService } from 'src/app/services/pokemon.service';
-import { MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
-
-import {PokemonDetail} from "src/app/models/poke-detail-model";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-poke-detail',
@@ -11,44 +8,31 @@ import {PokemonDetail} from "src/app/models/poke-detail-model";
   styleUrls: ['./poke-detail.component.scss']
 })
 export class PokeDetailComponent implements OnInit {
-  pokemonIndex: PokemonDetail
-  pokemon: any = '';
+
+ pokemon: any = ""
+ pokemonImg = '';
   pokemonType = [];
-  pokemonImg = ''
-
-  searchPokemon: PokemonDetail = new PokemonDetail();
 
 
-  constructor(private pokemonService: PokemonService, private activatedRouter : ActivatedRoute) {
+  constructor(private activatedRouter: ActivatedRoute,
+    private pokeService: PokemonService) {
     this.activatedRouter.params.subscribe(
-      params =>{this.getPokemon(params['id']);
-      }) }
-
-
-
-
-
-   ngOnInit(): void {}
-
-   getPokemon(id){
-     this.pokemonService.getPokemons(id).subscribe(
-       res =>{
-         console.log(res);
-
-         this.pokemon = res;
-         this.pokemonImg = this.pokemon.sprites.front_default;
-         this.pokemonType =  res.types[0].type.name
-        },
-        err => {console.log(err);
-        }
-        )
+      params =>{
+        this.getMoreData(params['id'])
       }
+    )
+  }
 
-      getAbilities(): string {
-        return this.pokemon.abilities.map(x => x.ability.name).join(', ');
-      }
+  ngOnInit(): void {
 
-        getPrincipalType(list: any[]) {
-        return list.filter(x => x.slot === 1)[0]?.type.name;
+  }
+
+  getMoreData(id: any){
+    this.pokeService.getMoreData(id).subscribe(
+      res =>{
+        this.pokemon = res;
+        this.pokemonImg = this.pokemon.sprites.front_default;
+        this.pokemonType = res.types[0].type.name;
       }
-    }
+    )}
+}
