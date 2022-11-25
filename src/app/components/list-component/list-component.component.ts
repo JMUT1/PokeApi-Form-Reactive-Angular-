@@ -36,7 +36,7 @@ data: User[]
     const dialogRef = this.dialog.open(CreatePageComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-
+      this.data = this.userService.getUser();
     });
 
 

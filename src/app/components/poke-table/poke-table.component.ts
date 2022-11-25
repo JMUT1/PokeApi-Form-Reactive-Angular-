@@ -7,6 +7,15 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { Router } from '@angular/router';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
+interface Sprite {
+  front_default: ''
+}
+
+interface allPokemonData {
+  id: number,
+  name: string,
+  sprites: Sprite
+}
 @Component({
   selector: 'app-poke-table',
   templateUrl: './poke-table.component.html',
@@ -19,10 +28,7 @@ export class PokeTableComponent implements OnInit {
   data: any[] = [];
   datasource = new MatTableDataSource<any>(this.newPokemons);
   pokemons =  [];
-  localStoragePokemons: any = []
-
-
-
+  localStoragePokemons = null;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
@@ -30,22 +36,32 @@ export class PokeTableComponent implements OnInit {
 
   ngOnInit(): void {
     // this.getPokemonsNew();
-    this.pokeService.getPokemonsNew()
-    .subscribe((response: any)=>{
-      response.results.forEach(result =>{
-        this.pokeService.getMoreData(result.name)
-        .subscribe((uniqResponse4:any)=>{
-          this.newPokemons.push(uniqResponse4)
-          // console.log(this.newPokemons);
-          localStorage.setItem('Pokemons', JSON.stringify(this.newPokemons))
-          this.datasource = new MatTableDataSource<any>(this.newPokemons)
-          this.datasource.paginator = this.paginator
+    if(this.localStoragePokemons === null) {
+      this.pokeService.getPokemonsNew()
+      .subscribe((response: any)=>{
+        response.results.forEach(result =>{
+          this.pokeService.getMoreData(result.name)
+          .subscribe((uniqResponse4:allPokemonData)=>{
+            const payload = {
+              id: uniqResponse4.id,
+              name: uniqResponse4.name,
+              sprite: uniqResponse4.sprites.front_default,
+            }
+            this.newPokemons.push(payload);
+            localStorage.setItem('Pokemons', JSON.stringify(this.newPokemons));
+            this.datasource = new MatTableDataSource<any>(this.newPokemons);
+            this.datasource.paginator = this.paginator;
+          })
         })
       })
-    })
+    } else {
+      // this.datasource = new MatTableDataSource<any>(this.localStoragePokemons)
+      // this.datasource.paginator = this.paginator
+    }
+
   }
 
-   applyFilter(event: Event) {
+  applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.datasource.filter = filterValue.trim().toLowerCase();
 

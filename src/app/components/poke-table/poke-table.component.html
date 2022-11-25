@@ -23,12 +23,7 @@
       <ng-container matColumnDef="image">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Poke</th>
         <td mat-cell *matCellDef="let row">
-          <img
-            src="{{ row.sprites.front_default }}"
-            alt="pokemon"
-            width="100"
-            height="100"
-          />
+          <img src="{{ row.sprite }}" alt="pokemon" width="100" height="100" />
         </td>
       </ng-container>
 

@@ -6,33 +6,25 @@ import { User } from '../models/form-user-info';
 })
 export class FormUserDataService {
 
+  userInfo : User[]
 
-
-userInfo : User[]
-
- constructor() {
-    this.userInfo = []
+  addUser(info: User){
+    this.userInfo = [];
+    if(localStorage.getItem('Users') === null){
+      this.userInfo.push(info);
+      localStorage.setItem('Users', JSON.stringify(this.userInfo))
+    }else{
+      this.userInfo = JSON.parse(localStorage.getItem('Users'))
+      this.userInfo.push(info)
+      localStorage.setItem('Users', JSON.stringify(this.userInfo))
+    }
   }
-
-
-addUser(info: User){
-  this.userInfo.push(info)
-  let userInfo: User[] = []
-  if(localStorage.getItem('Users') === null){
-    userInfo.push(info);
-    localStorage.setItem('Users', JSON.stringify(userInfo))
-  }else{
-    userInfo = JSON.parse(localStorage.getItem('Users'))
-    userInfo.push(info)
-    localStorage.setItem('Users', JSON.stringify(userInfo))
-  }
-}
 
 
   getUser(){
     if(localStorage.getItem === null){
       return this.userInfo
-    } else{
+    } else {
       this.userInfo = JSON.parse(localStorage.getItem('Users'))
       return this.userInfo
     }
