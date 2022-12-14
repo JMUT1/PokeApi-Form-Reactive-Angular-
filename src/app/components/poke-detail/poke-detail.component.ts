@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-poke-detail',
   templateUrl: './poke-detail.component.html',
-  styleUrls: ['./poke-detail.component.scss']
+  styleUrls: ['./poke-detail.component.css']
 })
 export class PokeDetailComponent implements OnInit {
 

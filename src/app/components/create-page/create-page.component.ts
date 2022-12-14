@@ -33,11 +33,9 @@ this.form = this.formBuilder.group({
   imageUrl: ['', [Validators.required, Validators.pattern(/[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/)]],
   phone: ['', [Validators.required, Validators.maxLength(10), Validators.pattern(/^[0-9]*$/)]],
   select: ['', Validators.required],
-});
+});}
 
 
-
-}
 
 userData():User{
   return this.userInfo = {
