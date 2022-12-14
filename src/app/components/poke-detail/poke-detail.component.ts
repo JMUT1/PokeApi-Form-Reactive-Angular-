@@ -12,6 +12,7 @@ export class PokeDetailComponent implements OnInit {
  pokemon: any = ""
  pokemonImg = '';
   pokemonType = [];
+  pokemonAbility = []
 
 
   constructor(private activatedRouter: ActivatedRoute,
@@ -33,6 +34,7 @@ export class PokeDetailComponent implements OnInit {
         this.pokemon = res;
         this.pokemonImg = this.pokemon.sprites.front_default;
         this.pokemonType = res.types[0].type.name;
+        this.pokemonAbility = res.ability[0].ability.name
       }
     )}
 }
